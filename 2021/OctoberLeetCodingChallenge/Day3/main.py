@@ -1,10 +1,48 @@
 
 
-# LeetCoding Challenge 2021. October. Day 2
+# LeetCoding Challenge 2021. October. Day 3. Jump Game
 
 '''
 
+55. Jump Game
+Medium
 
+You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
+
+Return true if you can reach the last index, or false otherwise.
+
+
+
+Example 1:
+
+Input: nums = [2,3,1,1,4]
+Output: true
+Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
+
+Example 2:
+
+Input: nums = [3,2,1,0,4]
+Output: false
+Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
+
+
+
+Constraints:
+
+    1 <= nums.length <= 104
+    0 <= nums[i] <= 105
+
+Accepted
+764,220
+Submissions
+2,091,828
+Seen this question in a real interview before?
+Jump Game II
+Medium
+Jump Game III
+Medium
+Jump Game VII
+Medium
 
 '''
 
@@ -24,7 +62,9 @@ from bisect import bisect, bisect_left
 
 
 class Solution:
-    pass
+    def canJump(self, nums: List[int]) -> bool:
+        t = list(it.accumulate([i + num for i, num in enumerate(nums)], max))
+        return all(i != t[i] for i in range(len(t) - 1))
 
 
 if __name__ == "__main__":
