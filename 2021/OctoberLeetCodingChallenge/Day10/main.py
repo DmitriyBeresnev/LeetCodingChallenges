@@ -1,6 +1,6 @@
 
 
-# LeetCoding Challenge 2021. October. Day 9
+# LeetCoding Challenge 2021. October. Day 10
 
 '''
 
