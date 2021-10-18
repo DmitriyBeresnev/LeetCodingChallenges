@@ -1,69 +1,52 @@
 
 
-# LeetCoding Challenge 2021. October. Day 12. Guess Number Higher or Lower
+# LeetCoding Challenge 2021. October. Day 15. Best Time to Buy and Sell Stock with Cooldown
 
 '''
 
-374. Guess Number Higher or Lower
-Easy
+309. Best Time to Buy and Sell Stock with Cooldown
+Medium
 
-We are playing the Guess Game. The game is as follows:
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
 
-I pick a number from 1 to n. You have to guess which number I picked.
+Find the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times) with the following restrictions:
 
-Every time you guess wrong, I will tell you whether the number I picked is higher or lower than your guess.
+    After you sell your stock, you cannot buy stock on the next day (i.e., cooldown one day).
 
-You call a pre-defined API int guess(int num), which returns 3 possible results:
-
-    -1: The number I picked is lower than your guess (i.e. pick < num).
-    1: The number I picked is higher than your guess (i.e. pick > num).
-    0: The number I picked is equal to your guess (i.e. pick == num).
-
-Return the number that I picked.
+Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
 
 
 
 Example 1:
 
-Input: n = 10, pick = 6
-Output: 6
+Input: prices = [1,2,3,0,2]
+Output: 3
+Explanation: transactions = [buy, sell, cooldown, buy, sell]
 
 Example 2:
 
-Input: n = 1, pick = 1
-Output: 1
-
-Example 3:
-
-Input: n = 2, pick = 1
-Output: 1
-
-Example 4:
-
-Input: n = 2, pick = 2
-Output: 2
+Input: prices = [1]
+Output: 0
 
 
 
 Constraints:
 
-    1 <= n <= 231 - 1
-    1 <= pick <= n
+    1 <= prices.length <= 5000
+    0 <= prices[i] <= 1000
 
 Accepted
-236,220
+227,982
 Submissions
-503,272
+452,255
 
 Related Topics
-Binary Search, Iterative
+Array, Dynamic Programming
 
 Similar Questions
-First Bad Version
+Best Time to Buy and Sell Stock
 Easy
-Guess Number Higher or Lower II
-Medium
-Find K Closest Elements
+Best Time to Buy and Sell Stock II
 Medium
 
 '''
@@ -84,18 +67,17 @@ from bisect import bisect, bisect_left
 
 
 class Solution:
-    def guessNumber(self, n: int) -> int:
-        low = 1
-        high = n
-        while True:
-            mid = low + (high - low) // 2
-            if guess(mid) < 0:
-                high = mid - 1
-            elif guess(mid) > 0:
-                low = mid + 1
-            else:
-                return mid
-        return 0
+    def maxProfit(self, prices):
+        n = len(prices)
+        if n <= 1: return 0
+
+        diff = [prices[i + 1] - prices[i] for i in range(n - 1)]
+        dp, dp_max = [0] * (n + 1), [0] * (n + 1)
+        for i in range(n - 1):
+            dp[i] = diff[i] + max(dp_max[i - 3], dp[i - 1])
+            dp_max[i] = max(dp_max[i - 1], dp[i])
+
+        return dp_max[-3]
 
 
 if __name__ == "__main__":

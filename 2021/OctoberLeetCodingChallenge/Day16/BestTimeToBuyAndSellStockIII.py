@@ -1,70 +1,70 @@
 
 
-# LeetCoding Challenge 2021. October. Day 12. Guess Number Higher or Lower
+# LeetCoding Challenge 2021. October. Day 16. Best Time to Buy and Sell Stock III
 
 '''
 
-374. Guess Number Higher or Lower
-Easy
+123. Best Time to Buy and Sell Stock III
+Hard
 
-We are playing the Guess Game. The game is as follows:
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
 
-I pick a number from 1 to n. You have to guess which number I picked.
+Find the maximum profit you can achieve. You may complete at most two transactions.
 
-Every time you guess wrong, I will tell you whether the number I picked is higher or lower than your guess.
-
-You call a pre-defined API int guess(int num), which returns 3 possible results:
-
-    -1: The number I picked is lower than your guess (i.e. pick < num).
-    1: The number I picked is higher than your guess (i.e. pick > num).
-    0: The number I picked is equal to your guess (i.e. pick == num).
-
-Return the number that I picked.
+Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
 
 
 
 Example 1:
 
-Input: n = 10, pick = 6
+Input: prices = [3,3,5,0,0,3,1,4]
 Output: 6
+Explanation: Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.
+Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 4-1 = 3.
 
 Example 2:
 
-Input: n = 1, pick = 1
-Output: 1
+Input: prices = [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are engaging multiple transactions at the same time. You must sell before buying again.
 
 Example 3:
 
-Input: n = 2, pick = 1
-Output: 1
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 Example 4:
 
-Input: n = 2, pick = 2
-Output: 2
+Input: prices = [1]
+Output: 0
 
 
 
 Constraints:
 
-    1 <= n <= 231 - 1
-    1 <= pick <= n
+    1 <= prices.length <= 105
+    0 <= prices[i] <= 105
 
 Accepted
-236,220
+333,877
 Submissions
-503,272
+796,104
+
 
 Related Topics
-Binary Search, Iterative
+Array, Dynamic Programming
 
 Similar Questions
-First Bad Version
+Best Time to Buy and Sell Stock
 Easy
-Guess Number Higher or Lower II
+Best Time to Buy and Sell Stock II
 Medium
-Find K Closest Elements
-Medium
+Best Time to Buy and Sell Stock IV
+Hard
+Maximum Sum of 3 Non-Overlapping Subarrays
+Hard
 
 '''
 
@@ -84,18 +84,7 @@ from bisect import bisect, bisect_left
 
 
 class Solution:
-    def guessNumber(self, n: int) -> int:
-        low = 1
-        high = n
-        while True:
-            mid = low + (high - low) // 2
-            if guess(mid) < 0:
-                high = mid - 1
-            elif guess(mid) > 0:
-                low = mid + 1
-            else:
-                return mid
-        return 0
+    pass
 
 
 if __name__ == "__main__":
