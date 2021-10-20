@@ -1,9 +1,8 @@
 
 
-# LeetCoding Challenge 2021. October. Day 19
+# LeetCoding Challenge 2021. October. Day 21
 
 '''
-
 
 
 
@@ -38,17 +37,17 @@ if __name__ == "__main__":
     #
     start = time.perf_counter()
     solution = Solution()
-    print(solution.twoSum(nums = [2,7,11,15], target = 9))
+    print(solution.twoSum(nums = [2 ,7 ,11 ,15], target = 9))
     end = time.perf_counter()
     print(f"test 1: {end - start:10.6f} sec")
     #
     start2 = time.perf_counter()
-    print(solution.twoSum(nums = [3,2,4], target = 6))
+    print(solution.twoSum(nums = [3 ,2 ,4], target = 6))
     end2 = time.perf_counter()
     print(f"test 2: {end2 - start2:10.6f} sec")
     #
     start3 = time.perf_counter()
-    print(solution.twoSum(nums = [3,3], target = 6))
+    print(solution.twoSum(nums = [3 ,3], target = 6))
     end3 = time.perf_counter()
     print(f"test 3: {end3 - start3:10.6f} sec")
     #
