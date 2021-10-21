@@ -1,8 +1,9 @@
 
 
-# LeetCoding Challenge 2021. October. Day 21
+# LeetCoding Challenge 2021. October. Day 22
 
 '''
+
 
 
 
